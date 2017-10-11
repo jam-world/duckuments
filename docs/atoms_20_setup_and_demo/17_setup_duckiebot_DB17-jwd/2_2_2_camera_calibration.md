@@ -37,10 +37,9 @@ Open two terminals on the laptop.
 
 In the first terminal, ssh into your robot and launch the joystick process:
 
-    laptop $ ssh ![ROBOT_NAME]
-    laptop $ cd ![DUCKIETOWN_ROOT]
-    laptop $ source environment.sh
-    laptop $ roslaunch duckietown camera.launch veh:=![robot name] raw:=true
+    duckiebot $ cd duckietown
+    duckiebot $ source environment.sh
+    duckiebot $ roslaunch duckietown camera.launch veh:=![robot name] raw:=true
 
 #### Step 3
 
@@ -93,7 +92,7 @@ This will automatically save the calibration results on your Duckiebot:
 
     ![DUCKIEFLEET_ROOT]/calibrations/camera_intrinsic/![robot name].yaml
 
-#### Step 7
+#### Step 4
 
 Now let's push the `![robot name].yaml` file to the git repository. You can stop the `camera.launch` termincal with <kbd>Ctrl</kbd>-<kbd>C</kbd> or open a new terminal in Byobu with <kbd>F2</kbd>.
 
@@ -102,7 +101,7 @@ Update your local git repository:
     duckiebot $ cd ![DUCKIEFLEET_ROOT]
     duckiebot $ git pull
     duckiebot $ git status
-    
+
 You should see that your new calibration file is uncommitted. You need to commit the file to your branch.
 
     duckiebot $ git checkout -b ![git username]-devel
@@ -136,14 +135,13 @@ Arrange the Duckiebot and checkerboard according to [](#fig:extrinsic_setup). No
 
 ssh into your robot and launch the camera
 
-    laptop $ ssh ![robot_name]
-    duckiebot $ cd ![DUCKIETOWN_ROOT]
+    duckiebot $ cd duckietown
     duckiebot $ source environment.sh
-    laptop $ roslaunch duckietown camera.launch veh:=![robot name] raw:=true
+    duckiebot $ roslaunch duckietown camera.launch veh:=![robot name] raw:=true
 
 #### Step 2
 
-Run the `ground_projection_node.py` node on your robot 
+Run the `ground_projection_node.py` node on your robot
 
     laptop $ cd ![DUCKIETOWN_ROOT]
     laptop $ source environment.sh
@@ -176,7 +174,7 @@ You should see something like this:
     ...
 If you want to check whether your camera output is similar to the one at the [](#fig:extrinsic_view) you can start `rqt_image_view`:
 
-    laptop $ rosrun rqt_image_view rqt_image_view
+    laptop $ rqt_image_view
 
 In the `rqt_image_view` interface, click on the drop-down list and choose the image topic:
 
@@ -194,5 +192,3 @@ This will do the extrinsic calibration and automatically save the file to your l
 
 As before, add this file to your local Git repository on your laptop, push the changes to your branch and do a pull request to master.
 Finally, you will want to update the local repository on your Duckiebot.
-
-
