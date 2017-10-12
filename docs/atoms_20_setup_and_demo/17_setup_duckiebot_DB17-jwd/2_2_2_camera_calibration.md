@@ -146,7 +146,7 @@ Run the `ground_projection_node.py` node on your robot
     laptop $ cd ![DUCKIETOWN_ROOT]
     laptop $ source environment.sh
     laptop $ source set_ros_master.sh ![robot name]
-    laptop $ roslaunch ground_projection ground_projection.launch  veh:=![robot name]
+    laptop $ roslaunch ground_projection ground_projection.launch  veh:=![robot name] local:=true
 
 #### Step 3
 
